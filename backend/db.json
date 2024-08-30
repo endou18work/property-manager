@@ -1,0 +1,171 @@
+{
+  "properties": [
+    {
+      "title": "Spacious 3 Bedroom Apartment with Sea View",
+      "location": {
+        "city": "Miami",
+        "state": "Florida",
+        "country": "USA"
+      },
+      "price": {
+        "amount": "754"
+      },
+      "id": "12346"
+    },
+    {
+      "id": "12347",
+      "title": "Spacious 3 Bedroom Apartment with Sea View",
+      "description": "A modern 3-bedroom apartment located in the heart of the city with a stunning view of the sea. Close to amenities and public transport.",
+      "location": {
+        "address": "123 Ocean Drive, Miami, FL 33139",
+        "city": "Miami",
+        "state": "Florida",
+        "zip_code": "33139",
+        "country": "USA"
+      },
+      "wifi-details": {
+        "wifiName": "LakeView_Cabin",
+        "wifiPassword": "H2v8@LmQ3yX$"
+      },
+      "price": {
+        "amount": 750000,
+        "currency": "USD"
+      },
+      "type": "Villa",
+      "status": "Available",
+      "features": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "floor_area": {
+          "value": 1500,
+          "unit": "sq_ft"
+        },
+        "lot_size": {
+          "value": 2000,
+          "unit": "sq_ft"
+        },
+        "year_built": 2015,
+        "parking": 2,
+        "heating": "Central",
+        "cooling": "Central Air",
+        "pets_allowed": true,
+        "furnished": true,
+        "hoa_fees": {
+          "amount": 400,
+          "currency": "USD",
+          "frequency": "monthly"
+        },
+        "amenities": [
+          "Swimming Pool",
+          "Gym",
+          "Sauna",
+          "Elevator",
+          "24/7 Security"
+        ]
+      },
+      "splash-page": [
+        {
+          "logo": "https://example.com/photos/1.jpg",
+          "title": "Get started with Wifi",
+          "description1": "Living room with sea view",
+          "description2": "Living room with sea view",
+          "description3": "Living room with sea view",
+          "virtual_tour_url": "https://example.com/virtual-tour",
+          "video_url": "https://example.com/video-tour"
+        }
+      ]
+    }
+  ],
+  "connect": [
+    {
+      "id": "738",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw653@gmail.com"
+    },
+    {
+      "id": "7dea",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw624@gmail.com"
+    },
+    {
+      "id": "0410",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "fdfd@gmail.com"
+    },
+    {
+      "id": "b035",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "fdfd@gmail.com"
+    },
+    {
+      "id": "e644",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "fdfd@gmail.com"
+    },
+    {
+      "id": "7cc3",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "fdfd@gmail.com"
+    },
+    {
+      "id": "d5d7",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "fdfd@gmail.com"
+    },
+    {
+      "id": "b081",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw624@gmail.com"
+    },
+    {
+      "id": "bc49",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw624@gmail.com"
+    },
+    {
+      "id": "38d6",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw624@gmail.com"
+    },
+    {
+      "id": "2e3e",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw624@gmail.com"
+    },
+    {
+      "id": "73e9",
+      "firstName": "Rajkumar",
+      "lastName": "Shaw",
+      "email": "rajkumarshaw624@gmail.com"
+    },
+    {
+      "id": "ff72",
+      "firstName": "Rajkumar",
+      "lastName": "Show",
+      "email": "test@gmail.com"
+    },
+    {
+      "id": "964f",
+      "firstName": "sagar",
+      "lastName": "kr",
+      "email": "sagar@gmail.com"
+    },
+    {
+      "id": "2a20",
+      "firstName": "Rajkumar",
+      "lastName": "Show",
+      "email": "gffgg@gmail.ccom"
+    }
+  ]
+}
