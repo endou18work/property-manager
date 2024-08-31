@@ -1,0 +1,212 @@
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #333;
+  overflow: hidden;
+}
+
+.splash-nav {
+  width: 100%;
+  padding: 20px 60px;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 40px;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 60px;
+  justify-content: flex-start; /* Align content to the start */
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Adjusted for better spacing */
+  box-sizing: border-box;
+}
+
+.form-container {
+  width: 35%; /* Set width to 40% */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.splash-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.splash-description {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.name-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.splash-button {
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.clear-button {
+  margin-left: 0px;
+  background-color: #f44336;
+}
+
+.connect-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+}
+
+.connect-button:disabled {
+  background-color: #0056b3;
+  cursor: not-allowed;
+}
+
+.wifi-details {
+  margin-top: 20px;
+}
+
+.wifi-heading {
+  font-size: 18px;
+  color: #333;
+}
+
+.wifi-detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 0;
+  border-bottom: 1px solid #939393;
+}
+
+.wifi-detail-item:last-child {
+  border-bottom: none;
+}
+
+.copy-icon {
+  cursor: pointer;
+  color: #007bff;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.copy-icon:hover {
+  color: #0056b3;
+}
+
+.wifi-steps {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.steps-icon,
+.step-icon {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+.hidden {
+  display: none;
+}
+
+.splash-footer {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+}
+
+.splash-footer p {
+  margin: 0px;
+}
+
+.splash-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.splash-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .splash-content {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .form-container,
+  .wifi-steps {
+    width: 90%;
+    margin: 10px auto;
+    margin-top: 40px !important;
+  }
+
+  .name-fields {
+    flex-direction: column;
+  }
+
+  .input-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
