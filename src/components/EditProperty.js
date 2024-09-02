@@ -15,14 +15,14 @@ function EditProperty() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/properties/${id}`)
+    axios.get(`http://localhost:8000/api/properties/${id}`)
       .then(response => {
         setProperty(response.data);
         setTitle(response.data.title);
-        setCity(response.data.location.city);
-        setState(response.data.location.state);
-        setCountry(response.data.location.country);
-        setAmount(response.data.price.amount);
+        setCity(response.data.location?.city);
+        setState(response.data.location?.state);
+        setCountry(response.data.location?.country);
+        setAmount(response.data.price?.amount);
       })
       .catch(() => setError('Error fetching property details'));
   }, [id]);
@@ -32,10 +32,10 @@ function EditProperty() {
     const updatedProperty = {
       title,
       location: { city, state, country },
-      price: { amount },
+      price: { amount: parseFloat(amount) }, // Ensure amount is a float
     };
 
-    axios.put(`http://localhost:8000/properties/${id}`, updatedProperty)
+    axios.put(`http://localhost:8000/api/properties/${id}`, updatedProperty)
       .then(() => {
         navigate(`/property-details/${id}`);
       })

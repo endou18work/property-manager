@@ -1,11 +1,13 @@
+// SplashPage.js
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { FaCopy, FaWifi, FaCheck, FaListUl, FaKey, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCopy, FaWifi, FaCheck, FaListUl, FaKey } from 'react-icons/fa';
 import './SplashPage.css';
 
 function SplashPage() {
-  const { id } = useParams();
+  const { id } = useParams(); // Get the property ID from the URL
   const [property, setProperty] = useState(null);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -15,8 +17,9 @@ function SplashPage() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [backgroundImg, setBackgroundImg] = useState('');
 
+  // Fetch property details based on ID from URL
   useEffect(() => {
-    axios.get(`http://localhost:8000/properties/${id}`)
+    axios.get(`http://localhost:8000/api/properties/${id}`) // Make sure the path matches your server route
       .then(response => {
         setProperty(response.data);
         if (response.data['backgroundImgs']) {
@@ -25,24 +28,28 @@ function SplashPage() {
       })
       .catch(() => setError('Error fetching property details'));
   }, [id]);
+  
 
+  // Validate the form
   useEffect(() => {
     const isValidEmail = email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     setIsFormValid(firstName !== '' && lastName !== '' && isValidEmail);
   }, [firstName, lastName, email]);
 
+  // Clear the form fields
   const handleClear = () => {
     setFirstName('');
     setLastName('');
     setEmail('');
   };
 
+  // Handle the connect action
   const handleConnect = () => {
     const postData = { firstName, lastName, email };
 
-    axios.post('http://localhost:8000/connect', postData)
+    axios.post('http://localhost:8000/api/connect', postData) // Make sure the path matches your server route
       .then(() => {
-        return axios.get(`http://localhost:8000/properties/${id}`);
+        return axios.get(`http://localhost:8000/api/properties/${id}`); // Refresh the property details
       })
       .then(response => {
         if (response.data['wifi-details']) {
@@ -54,6 +61,7 @@ function SplashPage() {
       .catch(() => setError('Error connecting to the property'));
   };
 
+  // Copy text to clipboard
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text)
       .then(() => {
@@ -78,6 +86,7 @@ function SplashPage() {
           {splashPageData ? (
             <div>
               <h1 className="splash-title">{splashPageData.title}</h1>
+              
               <p className="splash-description">{splashPageData.description1}</p>
             </div>
           ) : (
@@ -125,26 +134,19 @@ function SplashPage() {
                 <FaCopy className="copy-icon" onClick={() => copyToClipboard(wifiDetails.wifiName)} />
               </div>
               <div className="wifi-detail-item">
-                <p><strong><FaKey className="step-icon" />Wifi Password:</strong> {wifiDetails.wifiPassword}</p>
+                <p><strong><FaKey className="steps-icon" />Wifi Password:</strong> {wifiDetails.wifiPassword}</p>
                 <FaCopy className="copy-icon" onClick={() => copyToClipboard(wifiDetails.wifiPassword)} />
               </div>
             </div>
           )}
         </div>
-
-        {/* <div className="wifi-steps">
-          <h3><FaWifi className="steps-icon" /> How to Connect to Wi-Fi:</h3>
-          <p><FaListUl className="step-icon" /> Open your device's Wi-Fi settings.</p>
-          <p><FaWifi className="step-icon" /> Select the Wi-Fi network from the list.</p>
-          <p><FaKey className="step-icon" /> Enter the provided Wi-Fi password.</p>
-          <p><FaCheck className="step-icon" /> Connect to the network and enjoy browsing!</p>
-        </div> */}
       </div>
 
       <footer className="splash-footer">
         <p>&copy; {new Date().getFullYear()} <strong>Linkbase Technologies Inc.</strong> All Rights Reserved.</p>
         <p>
-          <a href="https://linkbase.ca/privacy-and-policy" target='_blanck'>Privacy Policy</a> | <a href="https://linkbase.ca/terms-of-service" target='_blanck'>Terms & Conditions</a>
+          <a href="https://linkbase.ca/privacy-and-policy" target='_blank' rel='noopener noreferrer'>Privacy Policy</a> | 
+          <a href="https://linkbase.ca/terms-of-service" target='_blank' rel='noopener noreferrer'>Terms & Conditions</a>
         </p>
       </footer>
     </div>

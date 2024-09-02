@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import QRCodeComponent from './QRCodeComponent'; // Ensure this import is correct
 import axios from 'axios';
 import './PropertyGrid.css';
-import { FaEye, FaEdit, FaTrash } from 'react-icons/fa'; // Importing icons
+import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 
 function PropertyGrid() {
   const [properties, setProperties] = useState([]);
@@ -12,9 +12,13 @@ function PropertyGrid() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/properties").then((response) => {
-      setProperties(response.data);
-    });
+    axios.get("http://localhost:8000/api/properties")
+      .then((response) => {
+        setProperties(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the properties!", error);
+      });
   }, []);
 
   const indexOfLastProperty = currentPage * propertiesPerPage;
@@ -30,9 +34,13 @@ function PropertyGrid() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8000/properties/${id}`).then(() => {
-      setProperties(properties.filter((property) => property.id !== id));
-    });
+    axios.delete(`http://localhost:8000/api/properties/${id}`) // Corrected endpoint with /api
+      .then(() => {
+        setProperties(properties.filter((property) => property._id !== id)); // Assuming the ID field from MongoDB is _id
+      })
+      .catch((error) => {
+        console.error("There was an error deleting the property!", error);
+      });
   };
 
   return (
@@ -68,28 +76,28 @@ function PropertyGrid() {
         <tbody>
           {currentProperties.length > 0 ? (
             currentProperties.map((property) => (
-              <tr key={property.id}>
-                <td>{property.id}</td>
+              <tr key={property._id}> {/* Updated to use _id */}
+                <td>{property._id}</td> {/* Updated to use _id */}
                 <td>{property.title}</td>
-                <td>{property.location.city}</td>
-                <td>{property.location.state}</td>
-                <td>{property.location.country}</td>
-                <td>${property.price.amount.toLocaleString()}</td>
+                <td>{property.location?.city}</td>
+                <td>{property.location?.state}</td>
+                <td>{property.location?.country}</td>
+                <td>${property.price?.amount.toLocaleString()}</td>
                 <td>
-                  <Link to={`/property-details/${property.id}`} className="action-button">
+                  <Link to={`/property-details/${property._id}`} className="action-button">
                     <FaEye /> {/* View icon */}
                   </Link>
-                  <Link to={`/edit-property/${property.id}`} className="action-button">
+                  <Link to={`/edit-property/${property._id}`} className="action-button">
                     <FaEdit /> {/* Edit icon */}
                   </Link>
                   <button 
                     className="action-button delete-button"
-                    onClick={() => handleDelete(property.id)}
+                    onClick={() => handleDelete(property._id)} // Updated to use _id
                   >
                     <FaTrash /> {/* Delete icon */}
                   </button>
                   <QRCodeComponent
-                    id={property.id}
+                    id={property._id} // Updated to use _id
                     size={64}
                   />
                 </td>

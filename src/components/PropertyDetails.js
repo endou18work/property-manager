@@ -1,22 +1,26 @@
+// PropertyDetails.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './PropertyDetails.css'; // Ensure this file is created for styling
+import './PropertyDetails.css'; // Make sure this CSS file exists and is styled appropriately
 
 function PropertyDetails() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [property, setProperty] = useState(null);
-  const [error, setError] = useState(null);
+  const { id } = useParams(); // Extract the property ID from the URL
+  const navigate = useNavigate(); // Hook for navigation
+  const [property, setProperty] = useState(null); // State to hold the property data
+  const [error, setError] = useState(null); // State to handle errors
 
+  // Fetch property details when the component mounts or when the ID changes
   useEffect(() => {
-    axios.get(`http://localhost:8000/properties/${id}`)
+    axios.get(`http://localhost:8000/api/properties/${id}`) // Updated API path
       .then(response => {
-        setProperty(response.data);
+        setProperty(response.data); // Set property data from the response
       })
-      .catch(() => setError('Error fetching property details'));
+      .catch(() => setError('Error fetching property details')); // Set error if fetching fails
   }, [id]);
 
+  // If there's an error, display the error message
   if (error) return <p className="error-message">{error}</p>;
 
   return (
