@@ -12,7 +12,7 @@ function PropertyGrid() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/properties").then((response) => {
+    axios.get("http://localhost:8000/api/properties").then((response) => {
       setProperties(response.data);
     });
   }, []);
